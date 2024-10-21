@@ -19,6 +19,22 @@ module.exports = {
       template: "./src/template.html",
     }),
   ],
+  module: {
+    rules: [
+      {
+        test: /\.css$/i, //all this does is tell webpack that if it encounters an imported file ending with ".css", it should use the listed loaders to process that CSS file. 
+        use: ["style-loader", "css-loader"], //webpack will run the loaders starting at the end. 
+      },
+      {
+        test: /\.html$/i,
+        loader: "html-loader",
+      }, 
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+      },       
+    ],
+  },
 };
 
 
